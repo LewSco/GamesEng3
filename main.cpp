@@ -7,11 +7,21 @@ const int _gameWidth = 800;
 const int _gameHeight = 600;
 const float _timeStep = 0.017f; //60 fps
 
+sf::Texture spritesheet;
+sf::Sprite invader;
+
 /// <summary>
 /// initialise all the objects needed for the game.
 /// </summary>
 void Init() 
 { 
+	if (!spritesheet.loadFromFile("res/img/invaders_sheet.png")) 
+	{
+		std::cerr << "Failed to load spritesheet!" << std::endl;
+	}
+
+	invader.setTexture(spritesheet);
+	invader.setTextureRect(IntRect(Vector2i(0, 0), Vector2i(32, 32)));
 }
 
 /// <summary>
@@ -29,7 +39,7 @@ void Update(float deltaTime)
 /// <param name="window"></param>
 void Render(RenderWindow& window) 
 {
-
+	window.draw(invader);
 }
 
 void Clean() 
