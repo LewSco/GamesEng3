@@ -10,7 +10,6 @@ SET(OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/")
 # Ouput all DLLs from all libs into main build folder
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY})
 
-
 #### Add External Dependencies ####
 add_subdirectory("lib/SFML")
 set(SFML_INCS "lib/SFML/include")
