@@ -5,10 +5,10 @@ using namespace sf;
 
 const int _gameWidth = 800;
 const int _gameHeight = 600;
-const float _timeStep = 0.017f; //60 fps
+const float _timeStep = 0.017f; // 60 fps
 
-sf::Texture spritesheet;
-sf::Sprite invader;
+Texture spritesheet;
+Sprite invader;
 
 /// <summary>
 /// initialise all the objects needed for the game.
@@ -75,6 +75,6 @@ int main()
 		window.display();
 	}
 
-	//Unload and shutdown
+	// Unload and shutdown
 	Clean();
 }
