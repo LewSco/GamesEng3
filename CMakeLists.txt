@@ -16,12 +16,12 @@ set(SFML_INCS "lib/SFML/include")
 link_directories("${CMAKE_BINARY_DIR}/lib/SFML/lib")
 add_custom_target(copy_resources ALL COMMAND ${CMAKE_COMMAND} 
   -E copy_directory
-    "${PROJECT_SOURCE_DIR}/res"
-    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/res
+    "${PROJECT_SOURCE_DIR}/Res"
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Res
 )
 
-#### Practical 1 ####
-add_executable(SpaceInvaders main.cpp)
+#### Practical ####
+add_executable(SpaceInvaders Main.cpp)
 target_include_directories(SpaceInvaders PRIVATE ${SFML_INCS})
 target_link_libraries(SpaceInvaders sfml-graphics)
 
