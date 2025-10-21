@@ -432,7 +432,6 @@ FodyWeavers.xsd
 /out/*
 
 # SFML library
-/Lib/*
 
 # Resources 
 /res/Fonts/*
