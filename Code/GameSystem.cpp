@@ -1,4 +1,4 @@
-#include "GameSystem.h"
+#include "GameSystem.hpp"
 
 Texture spritesheet;
 Sprite invader;

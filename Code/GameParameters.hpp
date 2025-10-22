@@ -1,4 +1,4 @@
-//GameParameters.h
+//GameParameters.hpp
 #pragma once //insure that this header file is included only once and there will no multiple definition of the same thing
 
 struct Parameters 

@@ -1,4 +1,4 @@
-//GameSystem.h
+//GameSystem.hpp
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>

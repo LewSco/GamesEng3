@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "GameSystem.h"
-#include "GameParameters.h"
+#include "GameSystem.hpp"
+#include "GameParameters.hpp"
 
 using namespace sf;
 
