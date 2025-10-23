@@ -1,20 +1,16 @@
 #include "GameSystem.hpp"
 
-Texture spritesheet;
-Sprite invader;
+Texture GameSystem::spritesheet;
 
 /// <summary>
 /// initialise all the objects needed for the game.
 /// </summary>
 void GameSystem::Init()
 {
-	if (!spritesheet.loadFromFile("res/img/invaders_sheet.png"))
+	if (!spritesheet.loadFromFile("Res/Img/invaders_sheet.png"))
 	{
 		std::cerr << "Failed to load spritesheet!" << std::endl;
 	}
-
-	invader.setTexture(spritesheet);
-	invader.setTextureRect(IntRect(Vector2i(0, 0), Vector2i(32, 32)));
 }
 
 /// <summary>
@@ -32,7 +28,6 @@ void GameSystem::Update(const float& deltaTime)
 /// <param name="window"></param>
 void GameSystem::Render(RenderWindow& window)
 {
-	window.draw(invader);
 }
 
 void GameSystem::Clean()

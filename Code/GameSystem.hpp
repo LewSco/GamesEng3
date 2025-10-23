@@ -1,12 +1,17 @@
 //GameSystem.hpp
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
+#include <memory>
+#include <SFML/Graphics.hpp>
+#include "Ship.hpp"
+
 using namespace sf;
 
 struct GameSystem 
 {
     //The global variables goes here
+    static Texture spritesheet;
 
     //game system functions
     static void Init();

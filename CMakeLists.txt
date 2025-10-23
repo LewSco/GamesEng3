@@ -1,7 +1,7 @@
 project(SpaceInvaders)
 cmake_minimum_required(VERSION 3.11)
 # Require modern C++
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #### Setup Directories ####
@@ -14,14 +14,10 @@ SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY})
 add_subdirectory("Lib/SFML")
 set(SFML_INCS "Lib/SFML/include")
 link_directories("${CMAKE_BINARY_DIR}/Lib/SFML/lib")
-add_custom_target(copy_resources ALL COMMAND ${CMAKE_COMMAND} 
-  -E copy_directory
-    "${PROJECT_SOURCE_DIR}/Res"
-    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Res
-)
+
 
 #### Practical ####
-add_executable(SpaceInvaders Code/Main.cpp "Code/GameSystem.cpp" "Code/Ship.h")
+add_executable(SpaceInvaders Code/Main.cpp Code/GameSystem.cpp Code/Ship.cpp)
 target_include_directories(SpaceInvaders PRIVATE ${SFML_INCS})
 target_link_libraries(SpaceInvaders sfml-graphics)
 
@@ -29,5 +25,10 @@ target_link_libraries(SpaceInvaders sfml-graphics)
 set_target_properties(SpaceInvaders
     PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY
     ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration)
+)
+add_custom_target(copy_resources ALL COMMAND ${CMAKE_COMMAND} 
+  -E copy_directory
+    "${PROJECT_SOURCE_DIR}/Res"
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Res
 )
 add_dependencies(SpaceInvaders copy_resources)

@@ -1,20 +1,22 @@
 //Ship.cpp
 #include "Ship.hpp"
+#include "GameSystem.hpp"
+
+using gs = GameSystem;
 
 Ship::Ship() {};
 
-Ship::Ship(const Ship& s) : _sprite(s._sprite) 
-{
-}
+Ship::Ship(const Ship& s) : _src(s._src) 
+{}
 
-Ship::Ship(sf::IntRect ir) : Sprite() 
+Ship::Ship(IntRect src) : Sprite() 
 {
-	_sprite = ir;
-	setTexture(spritesheet);
-	setTextureRect(_sprite);
+	_src = src;
+	setTexture(gs::spritesheet);
+	setTextureRect(_src);
 };
 
-void Ship::update(const float& dt) {}
+void Ship::Update(const float& dt) {}
 
 //Define the ship deconstructor. 
 //Although we set this to pure virtual, we still have to define it.

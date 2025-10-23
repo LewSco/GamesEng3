@@ -22,5 +22,5 @@ class Ship : public Sprite
         virtual void Update(const float& deltaTime);
 
     protected:
-        IntRect _sprite;
+        IntRect _src; // source rectangle for the sprite
 };

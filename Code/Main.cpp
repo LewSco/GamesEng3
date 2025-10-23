@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "GameSystem.hpp"
 #include "GameParameters.hpp"
 
