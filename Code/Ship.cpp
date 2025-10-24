@@ -1,8 +1,10 @@
 //Ship.cpp
 #include "Ship.hpp"
 #include "GameSystem.hpp"
+#include "GameParameters.hpp"
 
 using gs = GameSystem;
+using param = Parameters;
 
 Ship::Ship() {};
 
@@ -22,6 +24,11 @@ void Ship::Update(const float& dt) {}
 //Although we set this to pure virtual, we still have to define it.
 Ship::~Ship() = default;
 
+#pragma region Invader
+
+bool Invader::_direction;
+float Invader::_speed;
+
 Invader::Invader() : Ship() 
 {}
 
@@ -37,4 +44,21 @@ Invader::Invader(IntRect src, Vector2f pos) : Ship(src)
 void Invader::Update(const float& deltaTime) 
 {
 	Ship::Update(deltaTime);
+
+	move(deltaTime * (_direction ? 1.0f : -1.0f) * _speed, 0.0f);
+
+	if ((_direction && getPosition().x > param::GAME_WIDTH - param::SPRITE_SIZE / 2.f) ||
+		(!_direction && getPosition().x < param::SPRITE_SIZE / 2.f)) 
+	{
+		_direction = !_direction;
+
+		_speed += Invader::_acc;
+
+		for (std::shared_ptr<Ship>& ship : gs::ships) 
+		{
+			ship->MoveDown();
+		}
+	}
 }
+
+#pragma endregion

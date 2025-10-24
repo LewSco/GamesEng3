@@ -28,7 +28,12 @@ class Ship : public Sprite
 class Invader : public Ship 
 {
 
+    static bool _direction;
+    static float _speed;
+    static float _acc;
+
     public:
+
         Invader();
 
         Invader(const Invader& inv);

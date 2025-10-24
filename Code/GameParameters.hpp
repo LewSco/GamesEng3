@@ -3,8 +3,8 @@
 
 struct Parameters 
 {
-    static constexpr float _timeStep = 0.017f; // 60 fps
-    static constexpr int _gameWidth = 800;
-    static constexpr int _gameHeight = 600;
-    static constexpr int sprite_size = 32;
+    static constexpr float TIME_STEP = 0.017f; // 60 fps
+    static constexpr int GAME_WIDTH = 800;
+    static constexpr int GAME_HEIGHT = 600;
+    static constexpr int SPRITE_SIZE = 32;
 };
