@@ -7,11 +7,13 @@
 #include "Ship.hpp"
 
 using namespace sf;
+using namespace std;
 
 struct GameSystem 
 {
     //The global variables goes here
     static Texture spritesheet;
+    static vector<shared_ptr<Ship>> ships; //vector of shared pointers to Ships.
 
     //game system functions
     static void Init();
