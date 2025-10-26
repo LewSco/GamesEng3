@@ -18,6 +18,12 @@ Ship::Ship(IntRect src) : Sprite()
 	setTextureRect(_src);
 };
 
+void Ship::MoveDown()
+{
+	
+	Sprite::move(Vector2f(0.0f, _src.getSize().y / 2));
+}
+
 void Ship::Update(const float& dt) {}
 
 //Define the ship deconstructor. 

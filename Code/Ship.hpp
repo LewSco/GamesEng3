@@ -13,13 +13,15 @@ class Ship : public Sprite
         Ship(const Ship& s);
 
         //Constructor that takes a sprite
-        Ship(IntRect srce);
+        Ship(IntRect src);
 
         //Pure virtual deconstructor -- makes this an abstract class and avoids undefined behaviour!
         virtual ~Ship() = 0;
 
         //Update, virtual so can be overridden, but not pure virtual
         virtual void Update(const float& deltaTime);
+
+        void MoveDown();
 
     protected:
         IntRect _src; // source rectangle for the sprite
