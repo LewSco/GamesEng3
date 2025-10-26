@@ -12,9 +12,16 @@ void GameSystem::Init()
 	{
 		std::cerr << "Failed to load spritesheet!" << std::endl;
 	}
-
-	shared_ptr<Invader> inv = make_shared<Invader>(IntRect(Vector2i(0, 0), Vector2i(32, 32)), Vector2f(100, 100));
-	ships.push_back(inv); //This is when the copy constructor is called.
+	
+	for (int r = 0; r < param::rows; ++r) 
+	{
+		auto rect = IntRect(...);
+		for (int c = 0; c < param::columns; ++c) 
+		{
+			Vector2f position = ...;
+			auto inv = new Invader(rect, position);
+			ships.push_back(inv);
+		}
 }
 
 /// <summary>
