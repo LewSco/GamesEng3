@@ -21,7 +21,7 @@ Ship::Ship(IntRect src) : Sprite()
 void Ship::MoveDown()
 {
 	
-	Sprite::move(Vector2f(0.0f, _src.getSize().y / 2));
+	Sprite::move(Vector2f(0.0f, _src.getSize().y / 2.f));
 }
 
 void Ship::Update(const float& dt) {}
@@ -32,8 +32,9 @@ Ship::~Ship() = default;
 
 #pragma region Invader
 
-bool Invader::_direction;
-float Invader::_speed;
+bool Invader::_direction = true;
+float Invader::_speed = 10.f;
+float Invader::_acc = 10.f;
 
 Invader::Invader() : Ship() 
 {}

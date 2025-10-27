@@ -8,6 +8,7 @@ struct Parameters
     static constexpr int GAME_WIDTH = 800;
     static constexpr int GAME_HEIGHT = 600;
     static constexpr int SPRITE_SIZE = 32;
-    static constexpr int ENEMY_SIZE_X = 2;
-    static constexpr int ENEMY_SIZE_Y = 2;
+    static constexpr int GROUP_SIZE_X = 12;
+    static constexpr int GROUP_SIZE_Y = 6;
+    static constexpr int ENEMY_SPACING = 16;
 };

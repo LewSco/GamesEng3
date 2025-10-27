@@ -1,7 +1,10 @@
 #include "GameSystem.hpp"
+#include "GameParameters.hpp"
 
 Texture GameSystem::spritesheet;
 vector<shared_ptr<Ship>> GameSystem::ships;
+
+using param = Parameters;
 
 /// <summary>
 /// initialise all the objects needed for the game.
@@ -13,19 +16,22 @@ void GameSystem::Init()
 		std::cerr << "Failed to load spritesheet!" << std::endl;
 	}
 	
-	for (int r = 0; r < param::rows; ++r) 
+	for (int y = 0; y < param::GROUP_SIZE_Y; ++y)
 	{
-		auto rect = IntRect(...);
-		for (int c = 0; c < param::columns; ++c) 
+		auto rect = IntRect(32 * (4 - (((y + 2) / 2 - 1) * 2)), 0, 32, 32);
+
+		for (int x = 0; x < param::GROUP_SIZE_X; ++x)
 		{
-			Vector2f position = ...;
-			auto inv = new Invader(rect, position);
+			Vector2f position(x * (32 + param::ENEMY_SPACING) + 32 / 2.f,
+				y * (32 + param::ENEMY_SPACING) + 32 / 2.f);
+			auto inv = make_shared<Invader>(rect, position);
 			ships.push_back(inv);
 		}
+	}
 }
 
 /// <summary>
-/// // Update Everything
+/// Update Everything
 /// </summary>
 /// <param name="deltaTime"> deltaTime or the time between frames </param>
 void GameSystem::Update(const float& deltaTime)
