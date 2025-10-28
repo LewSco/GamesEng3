@@ -15,7 +15,12 @@ void GameSystem::Init()
 	{
 		std::cerr << "Failed to load spritesheet!" << std::endl;
 	}
-	
+
+	std::shared_ptr<Ship> player = std::make_shared<Player>();
+	ships.push_back(player);
+
+	/*ships.push_back(make_shared<Player>());*/
+
 	for (int y = 0; y < param::GROUP_SIZE_Y; ++y)
 	{
 		auto rect = IntRect(32 * (4 - (((y + 2) / 2 - 1) * 2)), 0, 32, 32);
@@ -28,6 +33,7 @@ void GameSystem::Init()
 			ships.push_back(inv);
 		}
 	}
+	
 }
 
 /// <summary>
@@ -50,7 +56,12 @@ void GameSystem::Render(RenderWindow& window)
 		window.draw(*(ship.get()));
 }
 
+/// <summary>
+/// free up the memory if necessary.
+/// </summary>
 void GameSystem::Clean()
 {
-	// free up the memory if necessary.
+	for (std::shared_ptr<Ship>& ship : ships)
+		ship.reset();//free up the memory of this shared pointer
+	ships.clear();//clear the vector to be sure we free up any memory left.
 }
