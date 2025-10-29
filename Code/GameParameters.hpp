@@ -11,4 +11,5 @@ struct Parameters
     static constexpr int GROUP_SIZE_X = 12;
     static constexpr int GROUP_SIZE_Y = 6;
     static constexpr int ENEMY_SPACING = 16;
+    static constexpr float PLAYER_SPEED = 100.0f;
 };
