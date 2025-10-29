@@ -431,8 +431,5 @@ FodyWeavers.xsd
 # Output folder
 /out/*
 
-# SFML library
-/Lib/*
-
 # Resources 
 /res/Fonts/*
