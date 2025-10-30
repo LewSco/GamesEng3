@@ -17,7 +17,7 @@ link_directories("${CMAKE_BINARY_DIR}/Lib/SFML/lib")
 
 
 #### Practical ####
-add_executable(SpaceInvaders Code/Main.cpp Code/GameSystem.cpp Code/Ship.cpp)
+add_executable(SpaceInvaders Code/Main.cpp Code/GameSystem.cpp Code/Ship.cpp "Code/Bullet.cpp")
 target_include_directories(SpaceInvaders PRIVATE ${SFML_INCS})
 target_link_libraries(SpaceInvaders sfml-graphics)
 

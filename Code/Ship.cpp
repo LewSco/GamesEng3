@@ -2,6 +2,7 @@
 #include "Ship.hpp"
 #include "GameSystem.hpp"
 #include "GameParameters.hpp"
+#include "Bullet.hpp"
 
 using gs = GameSystem;
 using param = Parameters;
@@ -29,11 +30,23 @@ void Ship::Update(const float& dt) {}
 //Although we set this to pure virtual, we still have to define it.
 Ship::~Ship() = default;
 
+void Ship::Explode() {
+	setTextureRect(IntRect(Vector2i(param::SPRITE_SIZE * 4, param::SPRITE_SIZE), 
+		Vector2i(param::SPRITE_SIZE, param::SPRITE_SIZE)));
+	_exploded = true;
+}
+
+bool Ship::IsExploded() const 
+{
+	return _exploded;
+}
+
 #pragma region Invader
 
 bool Invader::_direction = true;
 float Invader::_speed = 10.f;
 float Invader::_acc = 10.f;
+float Invader::_cooldown = 4.f;
 
 Invader::Invader() : Ship() 
 {}
@@ -65,11 +78,21 @@ void Invader::Update(const float& deltaTime)
 			ship->MoveDown();
 		}
 	}
+
+	_cooldown -= deltaTime;
+
+	if (_cooldown <= 0 && rand() % 100 == 0) 
+	{
+		Bullet::Fire(getPosition(), true);
+		_cooldown = 4.0f + (rand() % 60);
+	}
 }
 
 #pragma endregion
 
 #pragma region Player
+
+float Player::_cooldown = 0.f;
 
 Player::Player() : 
 	Ship(IntRect(Vector2i(param::SPRITE_SIZE * 5, param::SPRITE_SIZE), 
@@ -83,12 +106,12 @@ Player::Player() :
 
 void Player::Update(const float& dt) 
 {
-	
 	Ship::Update(dt);
 	
 	if (Keyboard::isKeyPressed(Keyboard::A)) //Move left
 	{
 		float leftBnd = param::SPRITE_SIZE / 2.f;
+
 		if (getPosition().x - param::PLAYER_SPEED * dt < leftBnd)
 			setPosition(leftBnd, getPosition().y);
 		else
@@ -102,6 +125,14 @@ void Player::Update(const float& dt)
 			setPosition(rightBnd, getPosition().y);
 		else
 			move(param::PLAYER_SPEED * dt, 0);
+	}
+
+	_cooldown -= dt;
+	
+	if (_cooldown <= 0 && Keyboard::isKeyPressed(Keyboard::W))
+	{
+		Bullet::Fire(getPosition(), false);
+		_cooldown = 0.7f;
 	}
 }
 

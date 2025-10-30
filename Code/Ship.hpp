@@ -23,8 +23,12 @@ class Ship : public Sprite
 
         void MoveDown();
 
+        bool IsExploded() const;
+        virtual void Explode();
+
     protected:
         IntRect _src; // source rectangle for the sprite
+        bool _exploded = false; // has the ship exploded
 };
 
 class Invader : public Ship 
@@ -33,6 +37,7 @@ class Invader : public Ship
     static bool _direction;
     static float _speed;
     static float _acc;
+    static float _cooldown;
 
     public:
 
@@ -47,6 +52,9 @@ class Invader : public Ship
 
 class Player : public Ship 
 {
+
+    static float _cooldown;
+
     public:
         Player();
         void Update(const float& dt) override;

@@ -1,5 +1,6 @@
 #include "GameSystem.hpp"
 #include "GameParameters.hpp"
+#include "Bullet.hpp"
 
 Texture GameSystem::spritesheet;
 vector<shared_ptr<Ship>> GameSystem::ships;
@@ -34,6 +35,8 @@ void GameSystem::Init()
 		}
 	}
 	
+	Bullet::Init();
+
 }
 
 /// <summary>
@@ -44,6 +47,8 @@ void GameSystem::Update(const float& deltaTime)
 {
 	for (std::shared_ptr<Ship>& ship : ships)
 		ship->Update(deltaTime);
+
+	Bullet::Update(deltaTime);
 }
 
 /// <summary>
@@ -54,6 +59,7 @@ void GameSystem::Render(RenderWindow& window)
 {
 	for (const std::shared_ptr<Ship>& ship : ships)
 		window.draw(*(ship.get()));
+	Bullet::Render(window);
 }
 
 /// <summary>
